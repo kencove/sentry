@@ -118,7 +118,9 @@ export function BuildDetailsMainContent(props: BuildDetailsMainContentProps) {
   const sizeInfo = buildDetailsData?.size_info;
   const isLoadingRequests = isAppSizeLoading || isBuildDetailsPending;
   const isSizeStarted = sizeInfo !== undefined && sizeInfo !== null;
-  const isSizeFailed = sizeInfo?.state === BuildDetailsSizeAnalysisState.FAILED;
+  const isSizeFailed =
+    sizeInfo?.state === BuildDetailsSizeAnalysisState.FAILED ||
+    sizeInfo?.state === BuildDetailsSizeAnalysisState.NOT_RAN;
   const showNoSizeRequested = !isLoadingRequests && !isSizeStarted;
 
   if (isLoadingRequests) {
